@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31T22:44:01.070346Z",
+  "title": "Design System: Candidatos a Graduar · Campus Estado de México",
+  "extensions": {
+    "colorMeta": {
+      "cover": {
+        "role": "primary",
+        "displayName": "Cover Stock Blue",
+        "tonalRamp": [
+          "#0B3A7F",
+          "#00265F",
+          "#001A42"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Plate Paper",
+        "tonalRamp": [
+          "#FFFFFF"
+        ]
+      },
+      "muted": {
+        "role": "secondary",
+        "displayName": "Ruled Blue",
+        "tonalRamp": [
+          "#A8BEE6"
+        ]
+      },
+      "tec-blue": {
+        "role": "brand",
+        "displayName": "Tec Blue",
+        "tonalRamp": [
+          "#0039A6"
+        ]
+      },
+      "seal-indigo": {
+        "role": "brand",
+        "displayName": "Anniversary Indigo",
+        "tonalRamp": [
+          "#445AA2"
+        ]
+      },
+      "seal-ink": {
+        "role": "ink",
+        "displayName": "Seal Ink",
+        "tonalRamp": [
+          "#000F35"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Cover Line",
+        "purpose": "The congratulation. Used exactly once, wdth 106."
+      },
+      "entry": {
+        "displayName": "Entry Name",
+        "purpose": "The five destination names."
+      },
+      "signature": {
+        "displayName": "Signature",
+        "purpose": "Identifying line: cohort, campus, generation."
+      },
+      "label": {
+        "displayName": "Programme Label",
+        "purpose": "Section label and roman numerals."
+      },
+      "caption": {
+        "displayName": "Colophon",
+        "purpose": "Closing note tying the page to the physical keychain."
+      }
+    },
+    "shadows": [
+      {
+        "name": "plate",
+        "value": "0 22px 44px -14px rgba(0,0,0,.55), 0 6px 14px -6px rgba(0,0,0,.38)",
+        "purpose": "The one elevated object: paper lying on the cover. Real offset, real blur, neutral colour."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-press",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Exponential ease-out for every transition and keyframe."
+      },
+      {
+        "name": "stamp",
+        "value": "0.72s",
+        "purpose": "The seal plate pressing in from blur, as a foil stamp would."
+      },
+      {
+        "name": "rule-draw",
+        "value": "0.5s",
+        "purpose": "A dotted leader rule drawing left-to-right beneath its entry."
+      },
+      {
+        "name": "stagger",
+        "value": "80ms",
+        "purpose": "Gap between successive entries in the order."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "359px"
+      },
+      {
+        "name": "laptop",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Programme Entry",
+      "kind": "nav",
+      "refersTo": "entry",
+      "description": "One destination in the order: roman numeral, name, reversed mark, dotted leader rule beneath.",
+      "html": "<ol class=\"ds-lista\"><li><a class=\"ds-entrada\" href=\"#\"><span class=\"ds-num\">III</span><span class=\"ds-nombre\">Centro de Vinculación y Desarrollo Profesional</span><span class=\"ds-marca\"></span></a></li><li><a class=\"ds-entrada\" href=\"#\"><span class=\"ds-num\">IV</span><span class=\"ds-nombre\">Emprendimiento</span><span class=\"ds-marca\"></span></a></li></ol>",
+      "css": ".ds-lista{list-style:none;margin:0;padding:0;background:#00265F;font-family:Archivo,system-ui,sans-serif}.ds-lista li{position:relative}.ds-lista li+li::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:repeating-linear-gradient(to right,rgba(168,190,230,.42) 0 2px,transparent 2px 6px)}.ds-entrada{display:grid;grid-template-columns:1.75rem 1fr auto;align-items:center;gap:0 .85rem;min-height:4.25rem;padding:1.05rem .25rem;text-decoration:none;color:#fff;border-radius:6px;transition:background-color .18s cubic-bezier(.16,1,.3,1)}.ds-entrada:hover{background:rgba(255,255,255,.075)}.ds-entrada:focus-visible{outline:2px solid #fff;outline-offset:2px}.ds-num{font-size:.6875rem;font-weight:700;letter-spacing:.1em;color:#A8BEE6}.ds-nombre{font-size:1.1875rem;font-weight:600;line-height:1.24;letter-spacing:-.012em;text-wrap:pretty}.ds-marca{width:3.25rem;height:1.75rem;border-radius:2px;background:rgba(255,255,255,.22)}"
+    },
+    {
+      "name": "Seal Plate",
+      "kind": "card",
+      "refersTo": "seal-plate",
+      "description": "The anniversary seal tipped onto the cover as paper, inside a double engraved rule. One per page.",
+      "html": "<div class=\"ds-placa\"><div class=\"ds-marco\"><div class=\"ds-sello\">SELLO</div></div></div>",
+      "css": ".ds-placa{width:17.5rem;background:#fff;border-radius:3px;padding:.5rem;box-shadow:0 22px 44px -14px rgba(0,0,0,.55),0 6px 14px -6px rgba(0,0,0,.38)}.ds-marco{border:1px solid rgba(0,15,53,.16);border-radius:1px;padding:1.35rem}.ds-sello{aspect-ratio:1;display:grid;place-items:center;color:#445AA2;font:800 2rem/1 Archivo,system-ui,sans-serif;letter-spacing:.1em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Orden de Ceremonia",
+    "overview": "A printed graduation programme, not a link-in-bio page. The surface is drenched Tec-blue cover stock; the 50th-anniversary seal is tipped onto it as the page's only white element, inside a double engraved rule. The five destinations are set as ruled entries — roman numeral, name, reversed mark — separated by dotted leader rules, the grammar of a contents page.\n\nThe page is the digital half of a physical object: a graduating student taps a commemorative keychain and this opens. That scene — standing, one hand, cellular data, under a minute — makes the mode Operate. Success is reaching a resource. The celebration lives in precise details, never in narrative.",
+    "keyCharacteristics": [
+      "Drenched blue ground; white is a single tipped-in plate, never a card system",
+      "Dotted leader rules as separators — a contents page, not a button stack",
+      "Marks reversed to white and sized optically rather than uniformly",
+      "One family, Archivo variable, inlined; wdth axis reserved for the cover line",
+      "One authored motion moment, gated entirely on prefers-reduced-motion"
+    ],
+    "rules": [
+      {
+        "name": "The Plate Is The Only Paper",
+        "body": "White appears exactly once, as the seal plate. A second white panel destroys the plate's status as the tipped-in element and turns the page into a card layout.",
+        "section": "colors"
+      },
+      {
+        "name": "Tint Secondary From The Ground",
+        "body": "Secondary text is #A8BEE6, drawn from the ground's own hue at 7.75:1. Neutral grey goes muddy against saturated blue and is never used.",
+        "section": "colors"
+      },
+      {
+        "name": "Optical, Not Uniform",
+        "body": "Marks are sized by how large they read, not by a shared box. A wordmark sits far shorter than a symbol. Equalising them is a regression.",
+        "section": "elevation"
+      },
+      {
+        "name": "Rem-Bounded Ramp",
+        "body": "Every clamp is bounded in rem so the type ramp still responds to OS-level font scaling.",
+        "section": "typography"
+      },
+      {
+        "name": "Static Is The Default",
+        "body": "All motion lives inside prefers-reduced-motion: no-preference. The still page is the base state, not a degraded fallback.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the ground drenched — blue owns the surface",
+      "Do tint every secondary colour from the ground's hue",
+      "Do size marks optically",
+      "Do keep the entire row tappable and above 44px",
+      "Do bound type in rem for OS font scaling"
+    ],
+    "donts": [
+      "Don't introduce cards, pills, or a second white panel",
+      "Don't add a coloured glow, radial halo, or zero-offset shadow",
+      "Don't equalise mark heights or re-colour the supplied logos",
+      "Don't use grey for secondary text",
+      "Don't reintroduce inline leader dots — the long CVDP label wraps on a phone and collapses them",
+      "Don't add content sections; the five links are settled scope"
+    ]
+  }
+}
