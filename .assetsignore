@@ -1,0 +1,32 @@
+# Files that live in the repo but must never be served publicly.
+# Format is the same as .gitignore. This file sits in the root of the assets
+# directory (which here is the repo root).
+
+# ── Repo internals ────────────────────────────────────────────────────────
+# .git MUST stay listed: the assets directory is the repo root, so without
+# this the entire history — including .git/config — would be downloadable.
+**/.git
+**/.gitignore
+**/node_modules
+**/.DS_Store
+.assetsignore
+wrangler.jsonc
+# local state written by `wrangler dev`
+.wrangler
+.wrangler/**
+
+# ── Project documentation ─────────────────────────────────────────────────
+README.md
+DESIGN.md
+PRODUCT.md
+.impeccable
+.impeccable/**
+
+# ── Design source files ───────────────────────────────────────────────────
+# Already converted into gentec2026/assets/ (SVG + PNG); the originals are
+# kept in the repo for future edits but are not for public download.
+Sello-50-aniversario.ai
+Ligas para el linktree.docx
+Emprendimiento-logo.jpeg
+Exatec-logo.jpg
+other-logo.png

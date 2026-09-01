@@ -1,0 +1,21 @@
+{
+  // Static-assets-only Worker for mevtek.dev.
+  // "name" must match the existing Worker in the Cloudflare dashboard.
+  "name": "mevtek-dev",
+  "compatibility_date": "2026-09-01",
+
+  // The assets directory is the REPO ROOT on purpose: that is what turns
+  // gentec2026/ into the URL subpath /gentec2026/ instead of the site root.
+  // Because the root is served, everything here is public unless it is listed
+  // in .assetsignore — see that file.
+  //
+  // No "main" and no "binding": both are only valid when a Worker script
+  // exists, and this deployment serves assets only.
+  "assets": {
+    "directory": "./",
+    // Serve real 404s for unknown paths. Must NOT be
+    // "single-page-application", which would serve index.html for every miss
+    // and make the excluded files look like they still resolve.
+    "not_found_handling": "none"
+  }
+}
