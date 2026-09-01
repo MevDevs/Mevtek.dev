@@ -6,7 +6,7 @@
 <title>Candidatos a Graduar · Campus Estado de México · ADSC ’26</title>
 <meta name="description" content="Recursos para los Candidatos a Graduar del Campus Estado de México, ADSC ’26. Journey de Graduación, EXATEC, Centro de Vinculación y Desarrollo Profesional, Emprendimiento y Posgrados.">
 <meta name="theme-color" content="#00265F">
-<meta name="color-scheme" content="dark light">
+<meta name="color-scheme" content="dark">
 <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -30,6 +30,10 @@
 }
 
 :root{
+  /* One fixed appearance. No light variant, and no auto-darkening by the
+     browser — this page renders identically on every device and setting. */
+  color-scheme:dark;
+
   --cover:#00265F;          /* cover stock */
   --cover-deep:#001A42;
   --cover-lift:#0B3A7F;
@@ -297,7 +301,7 @@ body{
 
   <p class="firma">
     Candidatos a Graduar<br>
-    <span class="firma__l">Campus Estado de México</span><span class="firma__sep"> · </span><span class="firma__l">AD&nbsp;’26</span>
+    <span class="firma__l">Campus Estado de México</span><span class="firma__sep"> · </span><span class="firma__l">AD’26</span>
   </p>
 
   <section class="orden" aria-labelledby="orden-titulo">
