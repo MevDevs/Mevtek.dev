@@ -48,7 +48,10 @@ The programme is pressed, then ruled in: the seal plate settles from a blur as a
 ## Notes for future work
 
 - The dotted rules are separators, not inline leaders. This was a deliberate engineering choice: the long "Centro de Vinculación y Desarrollo Profesional" label wraps to two lines on a phone, and an inline leader between name and mark collapses to nothing there. Do not "restore" inline leaders without re-solving that wrap.
-- Row marks are reversed to white and sized **optically, not uniformly** — the EXATEC wordmark is set far shorter than the symbol marks. Equalizing their heights is a regression, not a cleanup.
+- Row marks are reversed to white and sized **optically, not uniformly**. Equalizing their heights is a regression, not a cleanup.
+- Row II carries the EXATEC wordmark **as its name**, not as its mark, and the Tec torch in the mark slot. The client reported label-plus-wordmark as the same word twice. Accepted cost, chosen by the client over three alternatives: three of five rows now show the torch.
+- The seal is carried in the **silhouette of the physical keychain** (disc, tab, punched hole), replacing an earlier tipped-on paper rectangle. It shows the object the visitor is holding. The hole is genuinely punched via an SVG mask, and the shadow is `drop-shadow` on a wrapper because a mask clips `box-shadow`. The disc is flat white: the rectangle's double engraved rule and its −0.45° tilt were both removed after the client read them as leftover frames and as misalignment.
+- The keychain silhouette is taller than the rectangle it replaced, so the vertical rhythm above the list was tightened to keep **all five links inside the 390x844 first viewport** (last row bottom measures 839px). That invariant outranks seal size: if they conflict again, shrink the disc.
 - Two rows legitimately share the torch mark. That is the user's instruction, not a duplication bug.
 
 ## Unresolved

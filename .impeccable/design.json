@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-31T22:44:01.070346Z",
+  "generatedAt": "2026-09-01T18:30:01.556676Z",
   "title": "Design System: Candidatos a Graduar · Campus Estado de México",
   "extensions": {
     "colorMeta": {
@@ -73,9 +73,9 @@
     },
     "shadows": [
       {
-        "name": "plate",
-        "value": "0 22px 44px -14px rgba(0,0,0,.55), 0 6px 14px -6px rgba(0,0,0,.38)",
-        "purpose": "The one elevated object: paper lying on the cover. Real offset, real blur, neutral colour."
+        "name": "keychain",
+        "value": "drop-shadow(0 16px 26px rgba(0,0,0,.50)) drop-shadow(0 5px 10px rgba(0,0,0,.34))",
+        "purpose": "The one elevated object. Must be drop-shadow on a wrapper, not box-shadow: the disc is masked into the keychain silhouette and a mask clips box-shadow away. drop-shadow follows the real outline, including through the punched hole."
       }
     ],
     "motion": [
@@ -121,19 +121,19 @@
       "css": ".ds-lista{list-style:none;margin:0;padding:0;background:#00265F;font-family:Archivo,system-ui,sans-serif}.ds-lista li{position:relative}.ds-lista li+li::before{content:'';position:absolute;left:0;right:0;top:0;height:2px;background:repeating-linear-gradient(to right,rgba(168,190,230,.42) 0 2px,transparent 2px 6px)}.ds-entrada{display:grid;grid-template-columns:1.75rem 1fr auto;align-items:center;gap:0 .85rem;min-height:4.25rem;padding:1.05rem .25rem;text-decoration:none;color:#fff;border-radius:6px;transition:background-color .18s cubic-bezier(.16,1,.3,1)}.ds-entrada:hover{background:rgba(255,255,255,.075)}.ds-entrada:focus-visible{outline:2px solid #fff;outline-offset:2px}.ds-num{font-size:.6875rem;font-weight:700;letter-spacing:.1em;color:#A8BEE6}.ds-nombre{font-size:1.1875rem;font-weight:600;line-height:1.24;letter-spacing:-.012em;text-wrap:pretty}.ds-marca{width:3.25rem;height:1.75rem;border-radius:2px;background:rgba(255,255,255,.22)}"
     },
     {
-      "name": "Seal Plate",
+      "name": "Keychain",
       "kind": "card",
-      "refersTo": "seal-plate",
-      "description": "The anniversary seal tipped onto the cover as paper, inside a double engraved rule. One per page.",
-      "html": "<div class=\"ds-placa\"><div class=\"ds-marco\"><div class=\"ds-sello\">SELLO</div></div></div>",
-      "css": ".ds-placa{width:17.5rem;background:#fff;border-radius:3px;padding:.5rem;box-shadow:0 22px 44px -14px rgba(0,0,0,.55),0 6px 14px -6px rgba(0,0,0,.38)}.ds-marco{border:1px solid rgba(0,15,53,.16);border-radius:1px;padding:1.35rem}.ds-sello{aspect-ratio:1;display:grid;place-items:center;color:#445AA2;font:800 2rem/1 Archivo,system-ui,sans-serif;letter-spacing:.1em}"
+      "refersTo": "keychain",
+      "description": "The anniversary seal carried in the silhouette of the physical keychain: disc, moulded tab, and a real punched hole. Flat white, no rings, no tilt. One per page.",
+      "html": "<div class=\"ds-llavero\"><div class=\"ds-placa\"><div class=\"ds-marco\"><div class=\"ds-sello\">SELLO</div></div></div></div>",
+      "css": ".ds-llavero{width:15rem;filter:drop-shadow(0 16px 26px rgba(0,0,0,.50)) drop-shadow(0 5px 10px rgba(0,0,0,.34))}.ds-placa{position:relative;aspect-ratio:100/115.5;background:#fff;-webkit-mask-image:var(--llavero);mask-image:var(--llavero);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}.ds-marco{position:absolute;left:50%;top:56.71%;transform:translate(-50%,-50%);width:86%;aspect-ratio:1;display:grid;place-items:center}.ds-sello{width:82%;aspect-ratio:1;display:grid;place-items:center;color:#445AA2;font:800 2rem/1 Archivo,system-ui,sans-serif;letter-spacing:.1em}"
     }
   ],
   "narrative": {
     "northStar": "The Orden de Ceremonia",
-    "overview": "A printed graduation programme, not a link-in-bio page. The surface is drenched Tec-blue cover stock; the 50th-anniversary seal is tipped onto it as the page's only white element, inside a double engraved rule. The five destinations are set as ruled entries — roman numeral, name, reversed mark — separated by dotted leader rules, the grammar of a contents page.\n\nThe page is the digital half of a physical object: a graduating student taps a commemorative keychain and this opens. That scene — standing, one hand, cellular data, under a minute — makes the mode Operate. Success is reaching a resource. The celebration lives in precise details, never in narrative.",
+    "overview": "A printed graduation programme, not a link-in-bio page. The surface is drenched Tec-blue cover stock; the 50th-anniversary seal is carried in the silhouette of the physical keychain — disc, moulded tab, and a real punched hole — as the page's only white element. The five destinations are set as ruled entries — roman numeral, name, reversed mark — separated by dotted leader rules, the grammar of a contents page.\n\nThe page is the digital half of a physical object: a graduating student taps a commemorative keychain and this opens. That scene — standing, one hand, cellular data, under a minute — makes the mode Operate. Success is reaching a resource. The celebration lives in precise details, never in narrative.",
     "keyCharacteristics": [
-      "Drenched blue ground; white is a single tipped-in plate, never a card system",
+      "Drenched blue ground; white appears once, as the keychain silhouette",
       "Dotted leader rules as separators — a contents page, not a button stack",
       "Marks reversed to white and sized optically rather than uniformly",
       "One family, Archivo variable, inlined; wdth axis reserved for the cover line",
@@ -141,8 +141,8 @@
     ],
     "rules": [
       {
-        "name": "The Plate Is The Only Paper",
-        "body": "White appears exactly once, as the seal plate. A second white panel destroys the plate's status as the tipped-in element and turns the page into a card layout.",
+        "name": "The Keychain Is The Only White",
+        "body": "White appears exactly once, as the keychain. A second white panel destroys its status as the page's single object and turns the page into a card layout.",
         "section": "colors"
       },
       {
@@ -164,6 +164,16 @@
         "name": "Static Is The Default",
         "body": "All motion lives inside prefers-reduced-motion: no-preference. The still page is the base state, not a degraded fallback.",
         "section": "elevation"
+      },
+      {
+        "name": "Mask The Shape, Shadow The Wrapper",
+        "body": "The keychain silhouette is an SVG mask; a mask clips box-shadow away. The cast shadow must be drop-shadow on the wrapping element so it follows the real outline, hole included.",
+        "section": "elevation"
+      },
+      {
+        "name": "Logotype As Name",
+        "body": "Row II sets the EXATEC wordmark in the name slot at cap height, not in the mark slot, because label plus wordmark printed the same word twice. Its alt attribute is the link's accessible name.",
+        "section": "typography"
       }
     ],
     "dos": [
@@ -179,7 +189,12 @@
       "Don't equalise mark heights or re-colour the supplied logos",
       "Don't use grey for secondary text",
       "Don't reintroduce inline leader dots — the long CVDP label wraps on a phone and collapses them",
-      "Don't add content sections; the five links are settled scope"
+      "Don't add content sections; the five links are settled scope",
+      "Don't give the keychain a box-shadow; the mask erases it",
+      "Don't fake the punched hole with a circle filled in the background colour — the ground is a gradient",
+      "Don't let the seal exceed ~70% of the disc diameter or its corners clip against the mask",
+      "Don't put rings, borders or a tilt back on the disc — both were leftovers from the paper rectangle",
+      "Don't set the masked inner element's width in a media query; it un-centres it"
     ]
   }
 }

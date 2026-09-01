@@ -43,6 +43,10 @@
   --muted:#A8BEE6;          /* 7.7:1 on cover */
   --rule:rgba(168,190,230,.42);
   --rule-solid:rgba(168,190,230,.30);
+  /* Silueta del llavero: disco + pestaña unidos, agujero calado.
+     nonzero + subtrazo invertido = agujero real, no un círculo pintado. */
+  --llavero:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 115.9'%3E%3Cpath fill='%23fff' d='M0,65.9 A50,50 0 1,1 100,65.9 A50,50 0 1,1 0,65.9 Z M39.6,10.4 A10.4,10.4 0 1,1 60.4,10.4 A10.4,10.4 0 1,1 39.6,10.4 Z M45,10.4 A5,5 0 1,0 55,10.4 A5,5 0 1,0 45,10.4 Z'/%3E%3C/svg%3E");
+
   --press:rgba(255,255,255,.075);
   --press-strong:rgba(255,255,255,.14);
 
@@ -82,38 +86,58 @@ body{
   max-width:var(--col);
   margin-inline:auto;
   padding:
-    calc(env(safe-area-inset-top,0px) + clamp(2rem,7vh,3.25rem))
+    calc(env(safe-area-inset-top,0px) + clamp(1.5rem,5vh,2.5rem))
     calc(env(safe-area-inset-right,0px) + var(--pad))
     calc(env(safe-area-inset-bottom,0px) + 2rem)
     calc(env(safe-area-inset-left,0px) + var(--pad));
 }
 
-/* ── The seal, tipped onto the cover as a paper plate ──────────────────── */
-.placa{
-  width:min(72%,17.5rem);
+/* ── The seal, shaped as the commemorative keychain itself ─────────────
+   The wrapper carries the cast shadow via drop-shadow so it follows the
+   real silhouette — including through the hole — where box-shadow would be
+   clipped away by the mask.
+   No tilt: on the old paper rectangle a fraction of a degree read as
+   "placed by hand", but the tab sits ~110px above the pivot, so the same
+   rotation slides it ~0.9px off the disc's axis and reads as misaligned. */
+.llavero{
+  width:min(67%,14.75rem);
   margin:0 auto;
+  filter:
+    drop-shadow(0 16px 26px rgba(0,0,0,.50))
+    drop-shadow(0 5px 10px rgba(0,0,0,.34));
+}
+.placa{
+  position:relative;
+  aspect-ratio:100/115.9;        /* disc plus the cylindrical tab */
   background:var(--paper);
   color:var(--ink);              /* alt text must not render white-on-white */
-  border-radius:3px;
-  padding:.5rem;
-  transform:rotate(-.45deg);     /* tipped on by hand, not machine-centred */
-  box-shadow:
-    0 22px 44px -14px rgba(0,0,0,.55),
-    0 6px 14px -6px rgba(0,0,0,.38);
+  -webkit-mask-image:var(--llavero);
+          mask-image:var(--llavero);
+  -webkit-mask-size:100% 100%;
+          mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;
+          mask-repeat:no-repeat;
 }
+/* Pure centring box for the seal on the disc — no rules of its own.
+   The double engraved rule belonged to the paper rectangle; the moulded
+   object has no printed rings, so carrying them over just added chrome. */
 .placa__marco{
-  border:1px solid rgba(68,90,162,.34);
-  border-radius:1px;
-  /* the double engraved rule, drawn in the seal's own indigo */
-  box-shadow:0 0 0 3px var(--paper), 0 0 0 4px rgba(68,90,162,.18);
-  padding:clamp(.9rem,4vw,1.35rem);
-  display:block;
+  position:absolute;
+  left:50%;
+  top:56.86%;                    /* 65.9/115.9 — the disc's own centre */
+  transform:translate(-50%,-50%);
+  width:86%;
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
 }
-.placa img{display:block;width:100%;height:auto}
+/* 82% of the ring = 0.70x the disc: the artwork's bounding-box corners
+   land just inside the rim, and its actual corners are empty anyway. */
+.placa img{display:block;width:82%;height:auto}
 
 /* ── Cover type ────────────────────────────────────────────────────────── */
 .titulo{
-  margin:clamp(1.6rem,6vw,2.1rem) 0 0;
+  margin:clamp(1.15rem,4.6vw,1.7rem) 0 0;
   font-size:clamp(2rem,8.6vw,2.9rem);
   font-weight:800;
   font-variation-settings:'wdth' 113;
@@ -124,7 +148,7 @@ body{
 }
 .titulo__l2{display:block}
 .firma{
-  margin:.95rem auto 0;
+  margin:.75rem auto 0;
   max-width:22rem;
   text-align:center;
   font-size:.75rem;
@@ -137,7 +161,7 @@ body{
 .firma__l{white-space:nowrap}
 
 /* ── Section rule + heading, in the program's own manner ───────────────── */
-.orden{margin-top:clamp(2.25rem,8vw,3rem)}
+.orden{margin-top:clamp(1.6rem,6vw,2.4rem)}
 .orden__titulo{
   margin:0 0 .35rem;
   font-size:.6875rem;
@@ -165,7 +189,7 @@ body{
   align-items:center;
   gap:0 .85rem;
   min-height:4.25rem;
-  padding:1.05rem .25rem;
+  padding:1rem .25rem;
   text-decoration:none;
   color:#fff;
   border-radius:6px;
@@ -196,7 +220,10 @@ body{
 .m-cap   {height:1.85rem}
 .m-torch {height:1.75rem}
 .m-bolt  {height:1.9rem}
-.m-exatec{height:.95rem}          /* wordmark: optically smaller than a symbol */
+/* El logotipo EXATEC es el nombre de su fila: se fija a la altura de
+   mayúscula del texto de las demás, no a la altura de un símbolo. */
+.nombre--logo{display:flex;align-items:center}
+.logo-exatec{height:.82rem;width:auto;display:block}
 
 @media (hover:hover){
   .entrada:hover{background:var(--press)}
@@ -230,7 +257,7 @@ body{
 @media (max-width:359px){
   .entrada{grid-template-columns:1.3rem 1fr auto;gap:0 .6rem;padding:.95rem .1rem}
   .marca{min-width:2.6rem}
-  .m-exatec{height:.85rem}
+  .logo-exatec{height:.76rem}
   .titulo{font-size:1.8rem;letter-spacing:-.032em}
   .firma__l{display:block}
   .firma__sep{display:none}
@@ -239,7 +266,7 @@ body{
 /* ── Laptops: the whole programme should sit in one screen ─────────────── */
 @media (min-width:640px){
   .programa{padding-top:calc(env(safe-area-inset-top,0px) + clamp(1.75rem,4.5vh,2.5rem))}
-  .placa{width:min(56%,15rem)}
+  .llavero{width:min(56%,13.5rem)}
   .titulo{margin-top:1.6rem;font-size:2.5rem}
   .orden{margin-top:2.25rem}
   .colofon{margin-top:2.5rem}
@@ -251,6 +278,7 @@ body{
   /* The seal is pressed, then the order is ruled in beneath it. No text is
      ever hidden to stage this — every line paints immediately. */
   .placa{animation:sello .72s cubic-bezier(.16,1,.3,1) both}
+  /* el giro lo aporta .llavero; el keyframe solo presiona */
   .regla{animation:trazo .55s cubic-bezier(.16,1,.3,1) .18s both}
   .lista li::before,.lista li::after{animation:trazo .45s cubic-bezier(.16,1,.3,1) both}
   .lista li:nth-child(1)::before,.lista li:nth-child(1)::after{animation-delay:.26s}
@@ -260,8 +288,8 @@ body{
   .lista li:nth-child(5)::before,.lista li:nth-child(5)::after{animation-delay:.42s}
 }
 @keyframes sello{
-  from{opacity:0;transform:rotate(-.45deg) scale(.965) translateY(-6px);filter:blur(7px)}
-  to  {opacity:1;transform:rotate(-.45deg) scale(1) translateY(0);filter:blur(0)}
+  from{opacity:0;transform:scale(.965) translateY(-6px);filter:blur(7px)}
+  to  {opacity:1;transform:scale(1) translateY(0);filter:blur(0)}
 }
 @keyframes trazo{
   from{transform:scaleX(0)}
@@ -289,10 +317,12 @@ body{
 
 <main class="programa">
 
-  <div class="placa">
-    <div class="placa__marco">
-      <img src="assets/sello-50.svg" width="1200" height="1200"
-           alt="Sello conmemorativo: 50 Años Tec, Campus Estado de México">
+  <div class="llavero">
+    <div class="placa">
+      <div class="placa__marco">
+        <img src="assets/sello-50.svg" width="1200" height="1200"
+             alt="Sello conmemorativo: 50 Años Tec, Campus Estado de México">
+      </div>
     </div>
   </div>
 
@@ -328,9 +358,11 @@ body{
         <a class="entrada" href="https://tec.mx/es/exatec?srsltid=AfmBOorhCR7Jp0UaISbtzIIOJq-1Tk8Tja-yZ-WXmamy7YEkKEPUP5kF"
            target="_blank" rel="noopener noreferrer">
           <span class="num" aria-hidden="true">II</span>
-          <span class="nombre">EXATEC</span>
+          <span class="nombre nombre--logo">
+            <img class="logo-exatec" src="assets/exatec-white.png" width="474" height="99" alt="EXATEC">
+          </span>
           <span class="marca" aria-hidden="true">
-            <img class="m-exatec" src="assets/exatec-white.png" width="474" height="99" alt="">
+            <img class="m-torch" src="assets/tec-torch-white.png" width="166" height="240" alt="">
           </span>
           <span class="vh">(abre en una pestaña nueva)</span>
         </a>
