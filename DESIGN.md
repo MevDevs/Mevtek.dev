@@ -157,6 +157,8 @@ Two shape languages coexist, and the split is meaningful. **The keychain is roun
 
 Disc and tab are wound the same direction so `fill-rule: nonzero` unions them into one silhouette; the hole is wound in reverse so the same rule punches it out. That is why the hole is a real hole rather than a circle painted in the background colour — the ground is a gradient, and a painted circle would not match it.
 
+**The seal is rotated +10.3deg inside the disc.** The source artwork is a dynamic lockup: its "5-to-0" axis sits at −9.26°, while the same lockup measured off the physical keychain sits at −0.49° — the object prints it upright, in line with the ring. That difference gives +8.77°, and about 1.5° more was added as an optical correction: the lockup's mass sits low-left (TEC plus the campus block), so it reads tilted slightly longer than the numerals alone do. Rotation is about the centre, which preserves every point's distance from it, so nothing newly clips the mask.
+
 Two constraints hold this geometry together. The tab is a **cylinder**, so the hole must be concentric with it, not floated near its top. And the hole's lower edge must stay **above the disc's upper edge** (here by 0.5 units): if it crossed into the disc, the triple overlap would wind back to +1 under `nonzero` and the hole would render as a crescent instead of a hole. The tab overlaps the disc by 4.9 units, which is what produces the wide fused neck rather than a lollipop on a stick.
 
 **Everything else is nearly square**: `6px` on the entry press area, hairline rules elsewhere. The list is print; the object is not.

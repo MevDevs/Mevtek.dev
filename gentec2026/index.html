@@ -132,8 +132,15 @@ body{
   place-items:center;
 }
 /* 82% of the ring = 0.70x the disc: the artwork's bounding-box corners
-   land just inside the rim, and its actual corners are empty anyway. */
-.placa img{display:block;width:82%;height:auto}
+   land just inside the rim, and its actual corners are empty anyway.
+   The rotation is measured, not eyeballed: the "5->0" axis sits at -9.26deg
+   in the source artwork and at -0.49deg on the physical keychain, which
+   prints the lockup upright with the ring. That gives +8.77deg; the extra
+   ~1.5deg is an optical correction confirmed on the render, because the
+   lockup's mass (TEC and the campus block sit low-left) reads as tilted a
+   touch longer than the numerals alone do. Rotating about the centre keeps
+   every point the same distance from it, so nothing newly clips the mask. */
+.placa img{display:block;width:82%;height:auto;transform:rotate(10.3deg)}
 
 /* ── Cover type ────────────────────────────────────────────────────────── */
 .titulo{
