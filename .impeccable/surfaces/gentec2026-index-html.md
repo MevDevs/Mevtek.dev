@@ -1,5 +1,12 @@
 ---
 version: 1
+slug: "gentec2026-index-html"
+primary_target: "gentec2026/index.html"
+related_targets: []
+---
+
+---
+version: 1
 slug: "index-html"
 primary_target: "index.html"
 related_targets: []
@@ -7,7 +14,7 @@ related_targets: []
 
 ## Scope
 
-`index.html` — the entire product. One screen, opened by an NFC tap from a commemorative keychain.
+`gentec2026/index.html` — the entire product. One screen, opened by an NFC tap from a commemorative keychain.
 
 ## Visitor mode
 
@@ -47,6 +54,6 @@ The programme is pressed, then ruled in: the seal plate settles from a blur as a
 ## Unresolved
 
 - "ADSC" was deliberately left unexpanded; the user kept the acronym students already use.
-- The deploy host is not yet chosen. The build assumes relative paths and works from any static root or subpath.
-- **Deploy blocker:** `og:image` is still a relative path. WhatsApp and Slack do not resolve relative `og:image`, and re-sharing over WhatsApp is the likeliest way this link spreads, so it must become an absolute `https://…/assets/og.png` once the host is known. Flagged with a `DEPLOY:` comment in `index.html`.
-- Two sibling project directories exist: `Tec50años2` (this one) and `tec50Años`. Confirm which one deploys before publishing.
+- **Resolved:** the site deploys to Cloudflare Pages at `https://mevtek.dev/gentec2026/`. It lives in `gentec2026/` at the repo root so the domain root stays free for a separate site later; Pages serves the repo root, so the folder name *is* the subpath. `og:image` and `og:url` are now absolute against that URL.
+- Every internal path is relative, so the site is subpath-agnostic: renaming the folder changes the URL and nothing else — except the two absolute `og:` tags, which must be updated by hand.
+- Two sibling project directories exist: `Tec50años2` (this one, → `MevDevs/Tec50Linktree`) and `tec50Años` (→ `A01799782/tec50a-os`). Confirm which one deploys before programming the NFC keychains.

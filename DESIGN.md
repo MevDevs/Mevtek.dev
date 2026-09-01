@@ -105,7 +105,7 @@ Colour strategy is **Drenched**: the surface *is* Tec blue. The one white elemen
 
 ## Typography
 
-One family, Archivo variable, carrying both `wght` (400–800) and `wdth` (62–125) axes, self-hosted at `assets/fonts/archivo-latin.woff2`, preloaded, `font-display: swap`.
+One family, Archivo variable, carrying both `wght` (400–800) and `wdth` (62–125) axes, self-hosted at `gentec2026/assets/fonts/archivo-latin.woff2` (referenced from the page as `assets/fonts/…`, relative), preloaded, `font-display: swap`.
 
 **Keep it external.** Inlining the subset as a base64 data URI was tried and reverted: it puts ~120KB inside a render-blocking `<style>`, so nothing paints until the whole block arrives — on the crowded-campus cellular scene this product is built for, that inverts Product Principle 5. An external woff2 paints the field and all text in one round trip and swaps the face in. The cost is that opening the file directly from disk (`file://`) shows fallback type, because browsers block cross-origin font loads there; preview over a local HTTP server instead.
 
