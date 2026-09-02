@@ -17,10 +17,20 @@
   --muted:#A8BEE6;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+/* Paint the canvas: with color-scheme:dark an unpainted canvas is BLACK and
+   shows behind the status bar, behind a floating toolbar, and in overscroll.
+   The gradient lives on body, so html carries a solid stop from it. */
+html{
+  -webkit-text-size-adjust:100%;
+  background:var(--cover);
+  min-height:100%;
+}
 body{
   margin:0;
-  min-height:100svh;
+  /* dvh, not svh: svh is the SMALLEST viewport, so the body stayed short of
+     the bottom edge whenever the browser toolbar retracted. */
+  min-height:100vh;
+  min-height:100dvh;
   display:grid;
   place-content:center;
   gap:.9rem;

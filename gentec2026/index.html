@@ -55,7 +55,16 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+/* The canvas must be painted, not left to the UA. With color-scheme:dark an
+   unpainted canvas is BLACK, and it shows wherever the page's own boxes do
+   not reach: behind the status bar under viewport-fit=cover, behind a
+   floating browser toolbar, and in the rubber-band overscroll area. Desktop
+   never reveals it, which is why this only appeared on phones. */
+html{
+  -webkit-text-size-adjust:100%;
+  background:var(--cover);
+  min-height:100%;
+}
 body{
   margin:0;
   font-family:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
